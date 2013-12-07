@@ -1,0 +1,42 @@
+{
+	"working_dir" : "$project_path",
+	
+	"cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx flash 'mp3=/usr/local/lib/audacity/libmp3lame.dylib -S -h {in} {out}' && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.2 -swf-header 1280:720:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
+
+  "file_regex": "^([^:]*):([0-9]+):.*$",
+	"selector": "source.hx",
+
+	"variants": [
+		    { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx osx && open -a Xcode.app '$project_path/build/osx-build/$project_base_name.xcodeproj'"],
+          "name": "OSX"
+        },
+
+        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx windows"],
+          "name": "Windows"
+        },
+
+        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx windowsrt"],
+          "name": "WindowsRT"
+        },
+
+        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx linux"],
+          "name": "Linux"
+        },
+
+        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx android"],
+          "name": "Android"
+        },
+
+        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx ios"],
+          "name": "iOS"
+        },
+
+        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx html5"],
+          "name": "HTML5"
+        },
+
+        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx flash"],
+          "name": "Flash"
+        }
+    ]
+}
