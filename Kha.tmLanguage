@@ -18,7 +18,7 @@
   <array>
     <dict>
       <key>match</key>
-      <string>("format"|"game"|"assets"|"rooms"|"name"|"width"|"height"|"id"|"type"|"file"|"parent"|"neighbours"|"null")</string>
+      <string>("format"|"game"|"assets"|"rooms"|"name"|"width"|"height"|"id"|"type"|"file"|"background"|"parent"|"neighbours"|"null"|"red"|"green"|"blue")</string>
       <key>name</key>
       <string>keyword.other.kha</string>
     </dict>
