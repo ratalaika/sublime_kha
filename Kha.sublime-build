@@ -1,14 +1,22 @@
 {
 	"working_dir" : "$project_path",
 	
-	"cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx flash 'mp3=/usr/local/lib/audacity/lame -S -h {in} {out}' && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.2 -swf-header 1280:720:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
+	"cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx flash 'mp3=/usr/local/lib/audacity/lame -S -h {in} {out}' && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 1136:640:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
 
   "file_regex": "^([^:]*):([0-9]+):.*$",
 	"selector": "source.hx",
 
 	"variants": [
 		    { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx osx && open -a Xcode.app '$project_path/build/osx-build/$project_base_name.xcodeproj'"],
-          "name": "OSX"
+          "name": "OSX-XCode"
+        },
+
+        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx osx && xcodebuild -project '$project_path/build/osx-build/$project_base_name.xcodeproj' && open '$project_path/build/osx-build/build/Release/$project_base_name.app/Contents/MacOS/$project_base_name'"],
+          "name": "OSX-Test"
+        },
+
+        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx osx"],
+          "name": "OSX-Build"
         },
 
         { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx windows"],
@@ -33,10 +41,6 @@
 
         { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx html5"],
           "name": "HTML5"
-        },
-
-        { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx flash 'mp3=/usr/local/lib/audacity/lame -S -h {in} {out}' && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.2 -swf-header 1280:720:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
-          "name": "Flash"
         }
     ]
 }
