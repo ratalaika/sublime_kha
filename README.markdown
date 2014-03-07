@@ -6,9 +6,9 @@ Right now the bundle is extremly limited as is my knowledge of writing Sublime T
 ## Features
 
 - Build system
-
-Press CMD+B to build & run in Flash. This is great for quick testing.
-Press CMD+SHIFT+P to deploy to different target.
-
-- Syntax Highlight
+ - Press CMD+B to build & run in Flash. Great for quick testing.
+ - Press CMD+SHIFT+P to deploy to different target.
+- Editor
+ - Syntax Highlight
+ - Press CTRL+I to generate package imports
 - ...
