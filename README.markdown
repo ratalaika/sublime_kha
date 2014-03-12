@@ -3,6 +3,8 @@
 
 Right now the bundle is extremly limited as is my knowledge of writing Sublime Text plugins. Majority of code is from original Haxe Sublime Bundle. Only OSX support is tested currently.
 
+Sublime project name(.sublime-project) needs to be the same as the one you specify in .kha project file.
+
 ## Features
 
 - Build system
