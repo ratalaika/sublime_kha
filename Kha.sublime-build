@@ -4,9 +4,17 @@
   "file_regex": "^...([^:]*):([0-9]+):.*$",
   "selector": "source.hx",
 
-  "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx flash embedflashassets 'mp3=/usr/local/lib/audacity/lame -S -h {in} {out}' && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 1136:640:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
+  "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx flash && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 640:480:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
 
   "variants": [
+
+    { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx flash embedflashassets && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 640:480:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
+      "name": "Flash-embed"
+    },
+
+    { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx flash mp3='/usr/local/lib/lame -S -h {in} {out}' && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 640:480:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
+      "name": "Flash-sound"
+    },
 
     { "cmd": ["bash", "-c", "Kha/Tools/hake/hake-osx osx && open -a Xcode.app '$project_path/build/osx-build/$project_base_name.xcodeproj'"],
       "name": "OSX-XCode"
@@ -49,7 +57,7 @@
 
   "windows":
   {
-    "cmd": ["bash", "-c", "Kha/Tools/hake/hake.exe flash embedflashassets && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 1136:640:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && ./$project_path/build/flash/$project_base_name.swf"],
+    "cmd": ["bash", "-c", "Kha/Tools/hake/hake.exe flash && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 1136:640:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && ./$project_path/build/flash/$project_base_name.swf"],
 
     "variants": [
 
@@ -86,7 +94,7 @@
 
   "linux":
   {
-    "cmd": ["bash", "-c", "Kha/Tools/hake/hake-linux flash embedflashassets && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 1136:640:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
+    "cmd": ["bash", "-c", "Kha/Tools/hake/hake-linux flash && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 1136:640:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
 
     "variants": [
 
