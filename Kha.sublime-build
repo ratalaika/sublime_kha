@@ -1,7 +1,7 @@
 {
 	"working_dir" : "$project_path",
 
-  "file_regex": "^...([^:]*):([0-9]+):.*$",
+  "file_regex": "^................([^:]*):([0-9]+):.*$",
   "selector": "source.hx",
 
   "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js flash && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 640:480:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
