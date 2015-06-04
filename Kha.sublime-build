@@ -4,82 +4,74 @@
   "file_regex": "^[Haxe stdr: ]*../([^:]*):([0-9]+):.*$",
   "selector": "source.hx",
 
-  "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js flash && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 640:480:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
+  "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t html5"],
 
   "variants": [
 
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js flash embedflashassets && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 640:480:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
-      "name": "Flash-embed"
+    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t html5 && open 'http://127.0.0.1:8000/build/html5/index.html'"],
+      "name": "HTML5-Run"
     },
 
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js osx && open -a Xcode.app '$project_path/build/osx-build/$project_base_name.xcodeproj'"],
-      "name": "OSX-XCode"
+    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t osx && open -a Xcode.app '$project_path/build/osx-build/$project_base_name.xcodeproj'"],
+      "name": "OSX-Project"
     },
 
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js osx && xcodebuild -project '$project_path/build/osx-build/$project_base_name.xcodeproj' && open '$project_path/build/osx-build/build/Release/$project_base_name.app/Contents/MacOS/$project_base_name'"],
-      "name": "OSX-Test"
+    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t osx && xcodebuild -project '$project_path/build/osx-build/$project_base_name.xcodeproj' && open '$project_path/build/osx-build/build/Release/$project_base_name.app/Contents/MacOS/$project_base_name'"],
+      "name": "OSX-Run"
     },
 
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js osx"],
+    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t osx"],
       "name": "OSX-Build"
     },
 
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js windows"],
+    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t windows"],
       "name": "Windows"
     },
 
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js windowsrt"],
-      "name": "WindowsRT"
-    },
-
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js linux"],
+    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t linux"],
       "name": "Linux"
     },
 
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js android"],
+    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t android"],
       "name": "Android"
     },
 
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js ios && open -a Xcode.app '$project_path/build/ios-build/$project_base_name.xcodeproj'"],
+    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t ios && open -a Xcode.app '$project_path/build/ios-build/$project_base_name.xcodeproj'"],
       "name": "iOS"
     },
 
-    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js html5"],
+    { "cmd": ["bash", "-c", "/usr/local/bin/node Kha/make.js -t html5"],
       "name": "HTML5"
     }
   ],
 
   "windows":
   {
-    "cmd": ["bash", "-c", "node Kha/make.js flash && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 1136:640:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && ./$project_path/build/flash/$project_base_name.swf"],
+    "cmd": ["bash", "-c", "node Kha/make.js -t html5"],
 
     "variants": [
 
-      { "cmd": ["bash", "-c", "node Kha/make.js osx"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t osx"],
         "name": "OSX"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js windows"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t windows"],
         "name": "Windows"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js windowsrt"],
-        "name": "WindowsRT"
-      },
-
-      { "cmd": ["bash", "-c", "node Kha/make.js linux"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t linux"],
         "name": "Linux"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js android"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t android"],
         "name": "Android"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js ios"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t ios"],
         "name": "iOS"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js html5"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t html5"],
         "name": "HTML5"
       }
     ]
@@ -88,35 +80,31 @@
 
   "linux":
   {
-    "cmd": ["bash", "-c", "node Kha/make.js flash && haxe -main Main -swf build/flash/$project_base_name.swf -swf-version 11.6 -swf-header 1136:640:60:000000 -cp Sources -cp Kha/Sources -cp Kha/Backends/Flash -swf-lib build/flash/kha.swf && open '$project_path/build/flash/$project_base_name.swf'"],
+    "cmd": ["bash", "-c", "node Kha/make.js -t html5"],
 
     "variants": [
 
-      { "cmd": ["bash", "-c", "node Kha/make.js osx"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t osx"],
         "name": "OSX"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js windows"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t windows"],
         "name": "Windows"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js windowsrt"],
-        "name": "WindowsRT"
-      },
-
-      { "cmd": ["bash", "-c", "node Kha/make.js linux"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t linux"],
         "name": "Linux"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js android"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t android"],
         "name": "Android"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js ios"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t ios"],
         "name": "iOS"
       },
 
-      { "cmd": ["bash", "-c", "node Kha/make.js html5"],
+      { "cmd": ["bash", "-c", "node Kha/make.js -t html5"],
         "name": "HTML5"
       }
     ]
